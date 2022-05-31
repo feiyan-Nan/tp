@@ -3,8 +3,6 @@
 namespace app\controller;
 
 use app\BaseController;
-use app\Request;
-use think\captcha\facade\Captcha;
 
 class Demo extends BaseController
 {
@@ -15,15 +13,21 @@ class Demo extends BaseController
             'code' => '200',
             'data' => [['name' => 'hangman'], ['name' => 'lisi']]
         ];
-        return json($result);
+        return show(0, '成功', $result);
     }
 
     /**
      * 验证码
      * @return \think\Response
      */
-    public function verify(Request $request)
+    public function verify()
     {
-        return Captcha::create();
+        return captcha();
+    }
+
+    public function databases () {
+        $yzm = $this->request->param('yzm');
+//        echo captcha_check($yzm);
+        dump(captcha_check($yzm));
     }
 }

@@ -1,6 +1,18 @@
 ThinkPHP 6.0
 ===============
 
+字符串
+双引号可以解析变量, 单引号不能解析变量
+单引号的解析速度更快
+
+
+反作弊
+消息队列
+redis集群
+负载均衡
+
+
+
 > 运行环境要求PHP7.1+，兼容PHP8.0。
 
 [官方应用服务市场](https://market.topthink.com) | [`ThinkAPI`——官方统一API服务](https://docs.topthink.com/think-api)
