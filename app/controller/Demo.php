@@ -8,11 +8,9 @@ class Demo extends BaseController
 {
     public function show()
     {
-        $result = [
-            'status' => 1,
-            'code' => '200',
-            'data' => [['name' => 'hangman'], ['name' => 'lisi']]
-        ];
+        define('PI', 3.14);
+        $result = [['name' => 'hangman'], ['name' => PI]];
+//        return show(0, '成功', $result);
         return show(0, '成功', $result);
     }
 

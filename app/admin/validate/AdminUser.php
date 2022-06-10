@@ -9,7 +9,7 @@ namespace app\admin\validate;
 
 use think\Validate;
 
-class AdminUser extends  Validate {
+class AdminUser extends Validate {
     protected $rule = [
         'username' => 'require',
         'password' => 'require',
@@ -20,7 +20,6 @@ class AdminUser extends  Validate {
         'username' => '用户名必须,请重新输入',
         'password' => '密码必须',
         'captcha' => '验证码必须',
-
     ];
 
     protected function checkCapcha($value, $rule, $data = []) {
