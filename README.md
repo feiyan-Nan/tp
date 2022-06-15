@@ -11,6 +11,23 @@ ThinkPHP 6.0
 redis集群
 负载均衡
 
+## Redis
+
+默认有16个数据库 初始默认使用0号数据库
+
+使用`select 8` 来切换数据库
+
+`dbsize` 查看当前数据库的key的数量
+
+`flushdb` 清空当前库
+
+`flushall`  通杀全部库
+
+redis 是单线程 + 多路IO复用技术
+
+
+
+surpassed 超越, 超过
 
 
 > 运行环境要求PHP7.1+，兼容PHP8.0。

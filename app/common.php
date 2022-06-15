@@ -20,3 +20,12 @@ function show($status, $message = "error", $data = [], $httpStatus = 200) {
 
     return json($result, $httpStatus);
 }
+
+/**
+ * 对密码的加盐操作
+ * @param $password
+ * @return string
+ */
+function getMd5Password ($password) {
+    return md5($password.config('customize.salt'));
+}

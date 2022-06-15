@@ -16,8 +16,9 @@ class Login extends BaseController
         return captcha();
     }
 
-    public function test () {
-        dump(md5('admin'));
+    public function test()
+    {
+        dump(getMd5Password('admin123'));
     }
 
     /**
@@ -26,33 +27,34 @@ class Login extends BaseController
      */
     public function login()
     {
-        if(!$this->request->isPost()) {
-            return show(config("status.error"), "请求方式错误");
+        if (!$this->request->isPost()) {
+            return $this->error('请求方式错误');
         }
 
         $username = $this->request->param("username", "", "trim");
         $password = $this->request->param("password", "", "trim");
         $captcha = $this->request->param("captcha", "", "trim");
+
         $data = [
             'username' => $username,
             'password' => $password,
             'captcha' => $captcha,
         ];
         $validate = new \app\admin\validate\AdminUser();
-        if(!$validate->check($data)) {
-            return show(config("status.error"), $validate->getError());
+        if (!$validate->check($data)) {
+            return $this->error($validate->getError());
         }
 
         try {
             $result = (new \app\admin\business\AdminUser())->login($data);
-        }catch (\Exception $e) {
-            return show(config("status.error"), $e->getMessage());
+        } catch (\Exception $e) {
+            return $this->error($e->getMessage());
         }
 
-        if($result) {
-            return show(config("status.success"), "登录成功");
+        if ($result) {
+            return $this->success($result, '登录成功');
         } else {
-            return show(config("status.error"), "登录失败");
+            return $this->error('登录失败');
         }
     }
 }

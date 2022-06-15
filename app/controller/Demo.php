@@ -8,10 +8,11 @@ class Demo extends BaseController
 {
     public function show()
     {
-        define('PI', 3.14);
-        $result = [['name' => 'hangman'], ['name' => PI]];
+//        define('PI', 3.14);
+//        $result = [['name' => 'hangman'], ['name' => PI]];
+////        return show(0, '成功', $result);
 //        return show(0, '成功', $result);
-        return show(0, '成功', $result);
+        echo md5('admin123');
     }
 
     /**

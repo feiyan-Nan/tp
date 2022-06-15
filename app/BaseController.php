@@ -61,6 +61,39 @@ abstract class BaseController
     }
 
     /**
+     * @param array $data
+     * @param string $message
+     * @return \think\response\Json
+     */
+    public function success(array $data = [], string $message = "success")
+    {
+        $result = [
+            "status" => config("status.success"),
+            "message" => $message,
+            "result" => $data
+        ];
+
+        return json($result);
+    }
+
+    /**
+     * @param string $message
+     * @param array $data
+     * @param int $status
+     * @return \think\response\Json
+     */
+    public function error(string $message = "error", array $data = [], int $status = 0)
+    {
+        $result = [
+            "status" => $status || config('status.error'),
+            "message" => $message,
+            "result" => $data
+        ];
+
+        return json($result);
+    }
+
+    /**
      * 验证数据
      * @access protected
      * @param array $data 数据
@@ -96,5 +129,4 @@ abstract class BaseController
 
         return $v->failException(true)->check($data);
     }
-
 }

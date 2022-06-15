@@ -1,15 +1,14 @@
 <?php
 
 declare(strict_types=1);
+namespace app\admin\controller;
 
-namespace app\api\controller;
+use app\admin\controller\AuthBase;
 
-use app\BaseController;
-
-class User extends BaseController
+class User extends AuthBase
 {
     public function list()
     {
-        return $dd;
+        return $this->success(['name' => 'zhangsan']);
     }
 }
